@@ -1,0 +1,40 @@
+pipeline {
+  agent {
+    label {
+        label "built-in"
+        customWorkspace "/mnt/project/"
+    }
+  }
+  stages {
+    stage ("clear ws") {
+      steps {
+        sh "sudo rm -rf *"
+      }
+    }
+    stage ("git clone branch") {
+      steps {
+        sh "sudo git clone https://github.com/vinodhalsangi/assigments-jenkinsfile.git 24-q2 -b 24-q2"
+      }
+    }
+    stage (permission){
+        steps {
+            sh "sudo chmod -R 777 *"
+        }
+    }
+    stage ("ssh & remove old build") {
+      steps {
+        dir ("/mnt/jenkins-slave") {
+            sh "ssh -i /mnt/key-pair/devops-kp.pem ec2-user@3.110.119.185"
+            sh "sudo rm -rf /var/www/html/*"
+            sh "sudo service httpd start"
+            sh "exit"
+        }
+      }
+    }
+    stage ("deploy on server") {
+      steps {
+        sh "sudo scp -i /mnt/key-pair/devops-kp.pem /mnt/project/24-q1/index.html ec2-user@3.110.119.185:/var/www/html/"
+      }
+    }
+  }
+}
