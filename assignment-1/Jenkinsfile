@@ -18,7 +18,7 @@ pipeline {
     }
     stage ("index.html") {
       steps {
-        sh "sudo echo 'this is index.html' >> /var/www/html/"
+        sh "sudo echo 'this is index.html' >> /var/www/html/index.html"
       }
     }
     stage ("start service") {
