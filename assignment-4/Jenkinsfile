@@ -33,7 +33,7 @@ pipeline {
     }
     stage ("deploy on server") {
       steps {
-        sh "sudo scp -i /mnt/key-pair/devops-kp.pem /mnt/project/24-q1/index.html ec2-user@3.110.119.185:/var/www/html/"
+        sh "sudo scp -i /mnt/key-pair/devops-kp.pem /mnt/project/24-q2/index.html ec2-user@3.110.119.185:/var/www/html/"
       }
     }
   }
