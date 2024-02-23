@@ -28,7 +28,7 @@ pipeline {
         sh "sudo service httpd start"
       }
     }
-    stage ("permission") {
+    stage ("access permission") {
       steps {
         sh "sudo chmod -R 777 /var/www/html/"
       }
