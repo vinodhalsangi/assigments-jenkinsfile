@@ -14,6 +14,7 @@ pipeline {
             sudo cp /mnt/efs/* /var/www/html/
             sudo service httpd start
             sudo chmod -R 777 /var/www/html/
+            sudo umount /mnt/efs
         '''
       }
     }
@@ -33,6 +34,7 @@ pipeline {
             sudo cp /mnt/efs/* /var/www/html/
             sudo service httpd start
             sudo chmod -R 777 /var/www/html/
+            sudo umount /mnt/efs
         '''
       }
     }
@@ -52,6 +54,7 @@ pipeline {
             sudo cp /mnt/efs/* /var/www/html/
             sudo service httpd start
             sudo chmod -R 777 /var/www/html/
+            sudo umount /mnt/efs
         '''
       }
     }
