@@ -23,7 +23,7 @@ pipeline {
         sh "sudo echo 'this is index.html' >> /var/www/html/index.html"
       }
     }
-    stage ("permission") {
+    stage ("permission-2") {
       steps {
         sh "sudo chmod -R 777 /var/www/html/"
       }
