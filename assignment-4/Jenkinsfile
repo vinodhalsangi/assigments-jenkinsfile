@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage ("clear ws") {
       steps {
-        sh "sudo rm -rf *"
+        sh "sudo rm -rf 24-q2"
       }
     }
     stage ("git clone branch") {
