@@ -21,16 +21,6 @@ pipeline {
             sh "sudo chmod -R 777 *"
         }
     }
-    stage ("ssh & remove old build") {
-      steps {
-        dir ("/mnt/jenkins-slave") {
-            sh "ssh -i /mnt/key-pair/devops-kp.pem ec2-user@52.66.121.101"
-            sh "sudo rm -rf /var/www/html/*"
-            sh "sudo service httpd start"
-            sh "exit"
-        }
-      }
-    }
     stage ("deploy on server") {
       steps {
         sh "sudo scp -i /mnt/key-pair/devops-kp.pem /mnt/project/24-q1/index.html ec2-user@52.66.121.101:/var/www/html/"
