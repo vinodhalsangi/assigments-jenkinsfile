@@ -1,0 +1,59 @@
+pipeline {
+  agent {
+    label "slave-1"
+  }
+  stages {
+    stage ("executing shell script on slave-1") {
+      steps {
+        sh '''
+            #!/bin/bash
+            sudo rm -rf /mnt/efs
+            sudo mkdir /mnt/efs
+            sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-024bc8ee0e4aae5e2.efs.ap-south-1.amazonaws.com:/ /mnt/efs
+            sudo rm -rf /var/www/html/*
+            sudo cp /mnt/efs/* /var/www/html/
+            sudo service httpd start
+            sudo chmod -R 777 /var/www/html/
+        '''
+      }
+    }
+    stage ("execute shell script on slave -2") {
+      agent {
+        label {
+          label "slave -2"
+        }
+      }
+      steps {
+        sh '''
+            #!/bin/bash
+            sudo rm -rf /mnt/efs
+            sudo mkdir /mnt/efs
+            sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-024bc8ee0e4aae5e2.efs.ap-south-1.amazonaws.com:/ /mnt/efs
+            sudo rm -rf /var/www/html/*
+            sudo cp /mnt/efs/* /var/www/html/
+            sudo service httpd start
+            sudo chmod -R 777 /var/www/html/
+        '''
+      }
+    }
+    stage ("execute shell script on slave -2") {
+      agent {
+        label {
+          label "slave -3"
+        }
+      }
+      steps {
+        sh '''
+            #!/bin/bash
+            sudo rm -rf /mnt/efs
+            sudo mkdir /mnt/efs
+            sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-024bc8ee0e4aae5e2.efs.ap-south-1.amazonaws.com:/ /mnt/efs
+            sudo rm -rf /var/www/html/*
+            sudo cp /mnt/efs/* /var/www/html/
+            sudo service httpd start
+            sudo chmod -R 777 /var/www/html/
+        '''
+      }
+    }
+  }
+}
