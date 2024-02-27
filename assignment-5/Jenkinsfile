@@ -17,10 +17,10 @@ pipeline {
         '''
       }
     }
-    stage ("execute shell script on slave -2") {
+    stage ("execute shell script on slave-2") {
       agent {
         label {
-          label "slave -2"
+          label "slave-2"
         }
       }
       steps {
@@ -36,10 +36,10 @@ pipeline {
         '''
       }
     }
-    stage ("execute shell script on slave -2") {
+    stage ("execute shell script on slave-3") {
       agent {
         label {
-          label "slave -3"
+          label "slave-3"
         }
       }
       steps {
