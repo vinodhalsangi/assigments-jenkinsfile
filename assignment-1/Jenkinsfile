@@ -23,6 +23,11 @@ pipeline {
         sh "sudo echo 'this is index.html' >> /var/www/html/index.html"
       }
     }
+    stage ("permission") {
+      steps {
+        sh "sudo chmod -R 777 /var/www/html/"
+      }
+    }
     stage ("start service") {
       steps {
         sh "sudo service httpd start"
