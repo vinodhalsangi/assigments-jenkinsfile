@@ -1,7 +1,8 @@
 pipeline {
   agent {
     label "built-in"
-  } 
+  }
+  stages {
     stage ("httpd install") {
       steps {
         sh "sudo yum install httpd -y"
