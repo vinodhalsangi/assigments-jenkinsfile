@@ -1,13 +1,7 @@
 pipeline {
   agent {
     label "built-in"
-  }
-  stages {
-    stage ("clean ws") {
-      steps {
-        sh "rm -rf *"
-      }
-    }  
+  } 
     stage ("httpd install") {
       steps {
         sh "sudo yum install httpd -y"
