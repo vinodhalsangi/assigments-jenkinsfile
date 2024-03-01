@@ -28,7 +28,9 @@ pipeline {
     }
     stage ("deploy") {
       steps {
-        sh "sudo cp index.html /var/www/html/"
+        dir ("/mnt/jenkins-slave") {
+          sh "sudo cp index.html /var/www/html/"
+        }
       }
     }
     stage ("start service") {
