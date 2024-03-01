@@ -1,8 +1,15 @@
 pipeline {
   agent {
-    label "built-in"
+    label {
+      label "built-in"
+      customWorkspace "/mnt/jenkins-job"
   }
   stages {
+    stage ("clean ws") {
+      steps {
+        sh "sudo rm -rf *"
+      }
+    }
     stage ("httpd install") {
       steps {
         sh "sudo yum install httpd -y"
