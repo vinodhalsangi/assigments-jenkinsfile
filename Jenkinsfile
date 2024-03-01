@@ -27,7 +27,7 @@ pipeline {
       }
     }
     stage ("scm") {
-      label {
+      steps {
         Checkout SCM
       }
     }
