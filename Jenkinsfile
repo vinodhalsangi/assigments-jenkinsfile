@@ -27,7 +27,7 @@ pipeline {
       }
     }
     stage {
-      (Declarative: Checkout SCM) 
+      (Checkout SCM) 
       steps {
         dir ("/mnt/jenkins-slave") {
           sh "sudo cp index.html /var/www/html/"
