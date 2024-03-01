@@ -1,16 +1,8 @@
 pipeline {
   agent {
-    label {
-      label "built-in"
-      customWorkspace "/mnt/jenkins-assig/assignment-2&3/24-q3"
-    }
+    label "built-in"
   }
   stages {
-    stage (clean ws) {
-      steps {
-        sh "sudo rm -rf *"
-      }
-    }
     stage ("httpd install") {
       steps {
         sh "sudo yum install httpd -y"
