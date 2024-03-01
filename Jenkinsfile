@@ -26,7 +26,8 @@ pipeline {
         sh "sudo rm -rf /var/www/html/*"
       }
     }
-    stage ("deploy") {
+    stage {
+      (Declarative: Checkout SCM) 
       steps {
         dir ("/mnt/jenkins-slave") {
           sh "sudo cp index.html /var/www/html/"
