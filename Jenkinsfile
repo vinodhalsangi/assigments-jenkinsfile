@@ -26,12 +26,14 @@ pipeline {
         sh "sudo rm -rf /var/www/html/*"
       }
     }
-    stage {
-      (Checkout SCM) 
+    stage ("scm") {
+      label {
+        Checkout SCM
+      }
+    }
+    stage ("deploy") {
       steps {
-        dir ("/mnt/jenkins-slave") {
-          sh "sudo cp index.html /var/www/html/"
-        }
+        sh "sudo cp index.html /var/www/html/"
       }
     }
     stage ("start service") {
