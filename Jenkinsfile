@@ -3,6 +3,7 @@ pipeline {
     label {
       label "built-in"
       customWorkspace "/mnt/jenkins-job"
+    }
   }
   stages {
     stage ("clean ws") {
